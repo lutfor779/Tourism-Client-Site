@@ -10,7 +10,7 @@ const NavBar = () => {
 
     return (
         <div>
-            <Navbar bg="dark" variant="dark" expand="md" sticky="top">
+            <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Container>
                     <Navbar.Brand as={HashLink} to="/home">
                         <img

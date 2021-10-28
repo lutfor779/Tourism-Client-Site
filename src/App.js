@@ -5,7 +5,7 @@ import AuthProvider from './context/AuthProvider';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login/Login';
 import PrivateRoute from './pages/Login/Private/PrivateRoute';
-import Places from './pages/Places/Places';
+import Places from './pages/Places/Places/Places';
 import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
 
