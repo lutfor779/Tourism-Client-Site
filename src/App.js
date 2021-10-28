@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AuthProvider from './context/AuthProvider';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login/Login';
+import PrivateRoute from './pages/Login/Private/PrivateRoute';
+import Places from './pages/Places/Places';
+import Footer from './pages/Shared/Footer/Footer';
+import Header from './pages/Shared/Header/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider>
+        <BrowserRouter>
+          <main style={{ minHeight: "1200px" }}>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/home">
+                <Home />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <PrivateRoute path="/places">
+                <Places />
+              </PrivateRoute>
+            </Switch>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
