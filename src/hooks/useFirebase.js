@@ -12,6 +12,9 @@ const useFirebase = () => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
+    const [places, setPlaces] = useState([]);
+    const [booking, setBooking] = useState([]);
+
 
     const auth = getAuth();
 
@@ -35,8 +38,8 @@ const useFirebase = () => {
             }
             setIsLoading(false);
         });
-        return () => unsubscribe;
-    }, [auth])
+        return () => unsubscribe();
+    }, [auth, booking, places])
 
     const logOut = () => {
         setIsLoading(true);
@@ -58,8 +61,12 @@ const useFirebase = () => {
         user,
         error,
         isLoading,
+        places,
+        booking,
         setUser,
         setError,
+        setPlaces,
+        setBooking,
         signInWithGoogle,
         logOut
     }

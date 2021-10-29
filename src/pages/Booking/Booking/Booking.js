@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
-import Place from '../Place/Place';
+import Booked from '../Booked/Booked';
 
-const Places = () => {
-    const { places, setPlaces } = useAuth();
+const Booking = () => {
+    const { booking, setBooking, places, setPlaces } = useAuth();
+
+    useEffect(() => {
+        fetch('http://localhost:5000/booking')
+            .then(res => res.json())
+            .then(data => setBooking(data));
+    }, [setBooking]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/places`)
@@ -12,14 +18,15 @@ const Places = () => {
             .then(data => setPlaces(data));
     }, [setPlaces]);
 
+
     return (
         <div>
-            <h1>This is places</h1>
+            <h1>My Booking</h1>
             <Container>
                 <Row xs={1} md={2} lg={3} className="g-4">
 
                     {
-                        places.map(place => <Place key={place._id} place={place} />)
+                        booking.map(book => <Booked key={book._id} book={book} places={places} />)
                     }
                 </Row>
             </Container>
@@ -27,4 +34,4 @@ const Places = () => {
     );
 };
 
-export default Places;
+export default Booking;

@@ -21,7 +21,7 @@ const NavBar = () => {
                             className="d-inline-block align-top rounded-3"
                         />{' '}
                         LR Travel Agency</Navbar.Brand>
-                    
+
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -30,6 +30,8 @@ const NavBar = () => {
                             <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
                             <Nav.Link as={HashLink} to="/places">Places</Nav.Link>
                             <Nav.Link as={HashLink} to="/users">Users</Nav.Link>
+                            <Nav.Link as={HashLink} to="/booking">Booking</Nav.Link>
+                            <Nav.Link as={HashLink} to="/addPlace">Add Place</Nav.Link>
                         </Nav>
 
 
