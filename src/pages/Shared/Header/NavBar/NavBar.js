@@ -29,6 +29,7 @@ const NavBar = () => {
                         <Nav className="me-auto">
                             <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
                             <Nav.Link as={HashLink} to="/places">Places</Nav.Link>
+                            <Nav.Link as={HashLink} to="/users">Users</Nav.Link>
                         </Nav>
 
 

@@ -8,6 +8,7 @@ import PrivateRoute from './pages/Login/Private/PrivateRoute';
 import Places from './pages/Places/Places/Places';
 import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
+import Users from './pages/Users/Users';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
               </Route>
               <PrivateRoute path="/places">
                 <Places />
+              </PrivateRoute>
+              <PrivateRoute path="/users">
+                <Users />
               </PrivateRoute>
             </Switch>
           </main>

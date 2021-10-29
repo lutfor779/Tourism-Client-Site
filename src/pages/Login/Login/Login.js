@@ -10,17 +10,32 @@ const Login = () => {
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
 
+
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
                 setUser(result.user);
                 setError("");
+
+                // handle user
+                const user = { name: result.user.displayName, email: result.user.email };
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+
+                // redirect url
                 history.push(from)
             })
             .catch(err => {
                 setError(err.message)
             })
     }
+
+
 
     return (
         <div>
