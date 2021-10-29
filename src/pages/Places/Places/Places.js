@@ -11,9 +11,9 @@ const Places = () => {
         fetch(`http://localhost:5000/places`)
             .then(res => res.json())
             .then(data => setPlaces(data));
-    }, []);
+    }, [places]);
 
-    // console.log(places)
+
 
     return (
         <div>

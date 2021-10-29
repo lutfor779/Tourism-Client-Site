@@ -8,7 +8,7 @@ import PrivateRoute from './pages/Login/Private/PrivateRoute';
 import Places from './pages/Places/Places/Places';
 import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
-import Users from './pages/Users/Users';
+import Users from './pages/Users/Users/Users';
 
 function App() {
   return (

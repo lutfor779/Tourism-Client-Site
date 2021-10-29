@@ -28,8 +28,6 @@ const useFirebase = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                // setEmail(email);
-                // setName(name);
                 setError("");
             }
             else {
