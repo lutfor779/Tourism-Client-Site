@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Button, Container, FloatingLabel, Form } from 'react-bootstrap';
+import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
 
 const AddPlace = () => {
     const nameRef = useRef();
@@ -32,31 +32,36 @@ const AddPlace = () => {
 
 
     return (
-        <Container>
+        <div>
+            <h1>Add a place</h1>
+            <Row sm={1} md={2} lg={3}
+                className="justify-content-center mt-5 w-100 mx-auto">
+                <Col className="bg-success bg-opacity-25 p-3 rounded-3">
+                    <Form onSubmit={handleAddUser}>
+                        <FloatingLabel controlId="floatingInput"
+                            label="Place Name"
+                            className="mb-3"
+                        >
+                            <Form.Control type="text" ref={nameRef} placeholder="Place Name" required />
+                        </FloatingLabel>
 
-            <Form onSubmit={handleAddUser}>
-                <FloatingLabel controlId="floatingInput"
-                    label="Place Name"
-                    className="mb-3"
-                >
-                    <Form.Control type="text" ref={nameRef} placeholder="Place Name" required />
-                </FloatingLabel>
+                        <FloatingLabel controlId="floatingInput"
+                            label="Img Url"
+                            className="mb-3"
+                        >
+                            <Form.Control type="text" ref={imgRef} placeholder="Img Url" required />
+                        </FloatingLabel>
 
-                <FloatingLabel controlId="floatingInput"
-                    label="Img Url"
-                    className="mb-3"
-                >
-                    <Form.Control type="text" ref={imgRef} placeholder="Img Url" required />
-                </FloatingLabel>
-
-                <FloatingLabel controlId="floatingTextarea"
-                    className="mb-3"
-                    label="Description">
-                    <Form.Control as="textarea" ref={descriptionRef} placeholder="Description" required />
-                </FloatingLabel>
-                <Button variant="primary" type="submit" >Add</Button>
-            </Form>
-        </Container>
+                        <FloatingLabel controlId="floatingTextarea"
+                            className="mb-3"
+                            label="Description">
+                            <Form.Control as="textarea" ref={descriptionRef} placeholder="Description" required />
+                        </FloatingLabel>
+                        <Button variant="primary" type="submit" >Add</Button>
+                    </Form>
+                </Col>
+            </Row>
+        </div>
     );
 };
 
