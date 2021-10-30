@@ -15,7 +15,7 @@ const AddPlace = () => {
         const description = descriptionRef.current.value;
 
         const newUser = { name, img, description };
-        fetch('http://localhost:5000/places', {
+        fetch('https://aqueous-badlands-20033.herokuapp.com/places', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

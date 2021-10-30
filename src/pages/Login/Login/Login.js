@@ -19,7 +19,7 @@ const Login = () => {
 
                 // handle user
                 const user = { name: result.user.displayName, email: result.user.email };
-                fetch('http://localhost:5000/users', {
+                fetch('https://aqueous-badlands-20033.herokuapp.com/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

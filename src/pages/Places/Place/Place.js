@@ -8,7 +8,7 @@ const Place = ({ place }) => {
 
     const handleBooking = (id) => {
         const booking = { orderId: id, email: user.email, status: "pending" };
-        fetch('http://localhost:5000/booking', {
+        fetch('https://aqueous-badlands-20033.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

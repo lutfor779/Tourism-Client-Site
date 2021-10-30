@@ -21,7 +21,7 @@ const Booked = ({ book, places, booking, setBooking }) => {
     const handleUpdate = (id) => {
         const updateBooking = { status: "approved" };
 
-        const url = `http://localhost:5000/booking/${id}`;
+        const url = `https://aqueous-badlands-20033.herokuapp.com/booking/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -39,7 +39,7 @@ const Booked = ({ book, places, booking, setBooking }) => {
     }
 
     const handleDelete = id => {
-        const url = `http://localhost:5000/booking/${id}`;
+        const url = `https://aqueous-badlands-20033.herokuapp.com/booking/${id}`;
 
         fetch(url, {
             method: 'DELETE'

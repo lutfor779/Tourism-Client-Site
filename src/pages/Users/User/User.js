@@ -6,7 +6,7 @@ const User = (user) => {
     const { _id, name, email } = user.user;
 
     const handleDelete = id => {
-        const url = `http://localhost:5000/users/${id}`;
+        const url = `https://aqueous-badlands-20033.herokuapp.com/users/${id}`;
         fetch(url, {
             method: 'DELETE'
         })
