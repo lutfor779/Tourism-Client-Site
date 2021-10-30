@@ -22,11 +22,11 @@ const User = (user) => {
     }
 
     return (
-        <Col xs={12}>
-            <Row>
+        <Col xs={12} >
+            <Row className="bg-primary bg-opacity-10 gy-3 p-3 rounded-3 ">
                 <Col xs={12} md={4}>{name}</Col>
-                <Col xs={12} md={4}>{email}</Col>
-                <Col xs={12} md={4}>
+                <Col xs={12} md={5}>{email}</Col>
+                <Col xs={12} md={3}>
                     <Button
                         variant="danger"
                         onClick={() => handleDelete(_id)}

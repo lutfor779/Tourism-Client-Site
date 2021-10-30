@@ -3,14 +3,19 @@ import { Button, Card, Col } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 
 
-const Booked = ({ book, places }) => {
+const Booked = ({ book, places, booking, setBooking }) => {
     const { _id, orderId, email, status } = book;
     const { user } = useAuth();
 
     const [isApproved, setIsApproved] = useState(status);
 
-    const result = places.length !== 0 && places.find(place => place._id === orderId);
 
+    if (user.email !== email) {
+        return false;
+    }
+
+
+    const result = places.length !== 0 && places.find(place => place._id === orderId);
 
 
     const handleUpdate = (id) => {
@@ -33,6 +38,21 @@ const Booked = ({ book, places }) => {
             })
     }
 
+    const handleDelete = id => {
+        const url = `http://localhost:5000/booking/${id}`;
+
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    const remaining = booking.filter(book => book._id !== id);
+                    setBooking(remaining);
+                    alert('Deleted successfully');
+                }
+            });
+    }
 
     return (
         <div>
@@ -54,13 +74,19 @@ const Booked = ({ book, places }) => {
                                     isApproved === "pending" ? <small><Button variant="outline-success"
                                         size="sm"
                                         onClick={() => handleUpdate(_id)}
-                                    >Approve</Button></small> : <small><Button variant="outline-success"
+                                    >Approve</Button></small> : <small><Button variant="outline-secondary"
                                         size="sm"
                                         disabled
-                                    >Approve</Button></small>
+                                    >Approved</Button></small>
                                 }
 
                             </div>
+                            <Card.Text >
+                                <Button variant="danger px-4 mt-3"
+                                    size="sm"
+                                    onClick={() => handleDelete(_id)}
+                                >Remove</Button>
+                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>

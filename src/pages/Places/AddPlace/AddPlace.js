@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
+import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
+import Banner from '../../Shared/Banner/Banner';
 
 const AddPlace = () => {
     const nameRef = useRef();
@@ -33,10 +34,12 @@ const AddPlace = () => {
 
     return (
         <div>
-            <h1>Add a place</h1>
+            <Banner />
+
+            <h1 className="text-danger mt-5 pb-3">Want to add any place?</h1>
             <Row sm={1} md={2} lg={3}
                 className="justify-content-center mt-5 w-100 mx-auto">
-                <Col className="bg-success bg-opacity-25 p-3 rounded-3">
+                <Col className="bg-success bg-opacity-25 p-4 rounded-3">
                     <Form onSubmit={handleAddUser}>
                         <FloatingLabel controlId="floatingInput"
                             label="Place Name"

@@ -34,7 +34,7 @@ const Place = ({ place }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Button variant="success" onClick={() => handleBooking(_id)}>Book</Button>
+                    <Button variant="success px-5" onClick={() => handleBooking(_id)}>Book</Button>
                 </Card.Footer>
             </Card>
         </Col>

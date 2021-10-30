@@ -3,10 +3,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/AuthProvider';
 import Booking from './pages/Booking/Booking/Booking';
+import Home from './pages/Home/Home/Home';
 
-import Home from './pages/Home/Home';
 import Login from './pages/Login/Login/Login';
 import PrivateRoute from './pages/Login/Private/PrivateRoute';
+import NotFound from './pages/NotFound/NotFound';
 import AddPlace from './pages/Places/AddPlace/AddPlace';
 import Places from './pages/Places/Places/Places';
 import Footer from './pages/Shared/Footer/Footer';
@@ -41,6 +42,9 @@ function App() {
               </PrivateRoute>
               <Route path="/addPlace">
                 <AddPlace />
+              </Route>
+              <Route path="*">
+                <NotFound />
               </Route>
             </Switch>
           </main>

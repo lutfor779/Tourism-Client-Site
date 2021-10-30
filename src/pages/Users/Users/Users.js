@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import Banner from '../../Shared/Banner/Banner';
 import User from '../User/User';
 
 const Users = () => {
@@ -14,10 +15,11 @@ const Users = () => {
 
     return (
         <div>
+            <Banner />
             <h1>user</h1>
             <br />
             <Container>
-                <Row className="g-4">
+                <Row className="g-5">
                     {
                         users.map(user => <User key={user._id} user={user} users={users} setUsers={setUsers} />)
                     }
