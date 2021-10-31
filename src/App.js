@@ -2,13 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/AuthProvider';
-import Booking from './pages/Booking/Booking/Booking';
+import MyBooking from './pages/Booking/MyBooking/MyBooking';
 import Home from './pages/Home/Home/Home';
-
 import Login from './pages/Login/Login/Login';
 import PrivateRoute from './pages/Login/Private/PrivateRoute';
 import NotFound from './pages/NotFound/NotFound';
 import AddPlace from './pages/Places/AddPlace/AddPlace';
+import PlaceOrder from './pages/Places/PlaceOrder/PlaceOrder';
 import Places from './pages/Places/Places/Places';
 import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
@@ -38,7 +38,10 @@ function App() {
                 <Users />
               </PrivateRoute>
               <PrivateRoute path="/booking">
-                <Booking />
+                <MyBooking />
+              </PrivateRoute>
+              <PrivateRoute path="/placeOrder/:bookingId">
+                <PlaceOrder />
               </PrivateRoute>
               <Route path="/addPlace">
                 <AddPlace />

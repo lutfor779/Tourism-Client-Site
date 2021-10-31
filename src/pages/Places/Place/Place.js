@@ -1,27 +1,10 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import useAuth from '../../../hooks/useAuth';
+import { Link } from 'react-router-dom';
+
 
 const Place = ({ place }) => {
-    const { _id, name, img, description } = place;
-    const { user } = useAuth();
-
-    const handleBooking = (id) => {
-        const booking = { orderId: id, email: user.email, status: "pending" };
-        fetch('https://aqueous-badlands-20033.herokuapp.com/booking', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(booking)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    alert('Booked');
-                }
-            })
-    }
+    const { _id, name, img } = place;
 
     return (
         <Col>
@@ -29,13 +12,12 @@ const Place = ({ place }) => {
                 <Card.Img variant="top" src={img} height="250" className="rounded-top" />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>
-                        {description}
-                    </Card.Text>
+                    <Card.Text>{_id}</Card.Text>
+
+                    <Link to={`/placeOrder/${_id}`}>
+                        <Button variant="success px-5 mt-3" >Book</Button>
+                    </Link>
                 </Card.Body>
-                <Card.Footer>
-                    <Button variant="success px-5" onClick={() => handleBooking(_id)}>Book</Button>
-                </Card.Footer>
             </Card>
         </Col>
     );

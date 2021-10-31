@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 import Banner from '../../Shared/Banner/Banner';
 import Booked from '../Booked/Booked';
 
-const Booking = () => {
+const MyBooking = () => {
     const { booking, setBooking, places, setPlaces } = useAuth();
 
     useEffect(() => {
@@ -49,4 +49,4 @@ const Booking = () => {
     );
 };
 
-export default Booking;
+export default MyBooking;
