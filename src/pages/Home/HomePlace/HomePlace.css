@@ -1,0 +1,9 @@
+.card{
+    background-image: linear-gradient(to right top, #e6e6fa93, #ddefff93, #daf6fc73, #e1fcf6, #f0fff08e);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+
+}
+.card:hover{
+    transform: scale(1.05);
+    background-image: linear-gradient(319deg, #faa499b0 0%, #f7dc85ab 37%, #ffc65c96 100%);   
+}
