@@ -39,19 +39,24 @@ const Booked = ({ book, places, booking, setBooking }) => {
     }
 
     const handleDelete = id => {
-        const url = `https://aqueous-badlands-20033.herokuapp.com/booking/${id}`;
+        const result = window.confirm('Want to remove this item?');
+        // console.log(result);
 
-        fetch(url, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount) {
-                    const remaining = booking.filter(book => book._id !== id);
-                    setBooking(remaining);
-                    alert('Deleted successfully');
-                }
-            });
+        if (result) {
+            const url = `https://aqueous-badlands-20033.herokuapp.com/booking/${id}`;
+
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        const remaining = booking.filter(book => book._id !== id);
+                        setBooking(remaining);
+                        alert('Deleted successfully');
+                    }
+                });
+        }
     }
 
     return (

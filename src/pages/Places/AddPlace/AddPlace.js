@@ -57,8 +57,9 @@ const AddPlace = () => {
 
                         <FloatingLabel controlId="floatingTextarea"
                             className="mb-3"
-                            label="Description">
-                            <Form.Control as="textarea" ref={descriptionRef} placeholder="Description" required />
+                            label="Description"
+                        >
+                            <Form.Control as="textarea" type="url" ref={descriptionRef} placeholder="Description" required />
                         </FloatingLabel>
                         <Button variant="primary" type="submit" >Add</Button>
                     </Form>
