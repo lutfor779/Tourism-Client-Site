@@ -17,7 +17,7 @@ const Users = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/admin`)
+        fetch(`https://aqueous-badlands-20033.herokuapp.com/admin`)
             .then(res => res.json())
             .then(data => setAdmins(data));
     }, []);
