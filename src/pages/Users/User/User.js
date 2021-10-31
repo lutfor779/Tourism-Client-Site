@@ -1,9 +1,12 @@
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 
-const User = (user) => {
-    const { users, setUsers } = user;
-    const { _id, name, email } = user.user;
+const User = (props) => {
+    const { singleUser, users, admins, currentUser, setUsers } = props;
+    const { _id, name, email } = singleUser;
+
+    const confirmAdmin = admins.find(admin => admin.email === currentUser.email);
+
 
     const handleDelete = id => {
         const url = `https://aqueous-badlands-20033.herokuapp.com/users/${id}`;
@@ -27,12 +30,19 @@ const User = (user) => {
                 <Col xs={12} md={4}>{name}</Col>
                 <Col xs={12} md={5}>{email}</Col>
                 <Col xs={12} md={3}>
-                    <Button
-                        variant="danger"
-                        onClick={() => handleDelete(_id)}
-                    >
-                        Delete
-                    </Button>
+                    {
+                        confirmAdmin ? <Button
+                            variant="danger"
+                            onClick={() => handleDelete(_id)}
+                        >
+                            Delete
+                        </Button> : <Button
+                            variant="danger"
+                            disabled
+                        >
+                            Delete
+                        </Button>
+                    }
                 </Col>
             </Row>
         </Col>
