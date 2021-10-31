@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 
-const AllBooking = ({ book, places, booking, setBooking }) => {
+const AllBooking = ({ book, places, booking, setBooking, admins }) => {
     const { _id, orderId, email, status } = book;
     const { user } = useAuth();
 
     const [isApproved, setIsApproved] = useState(status);
 
     const result = places.length !== 0 && places.find(place => place._id === orderId);
+    const confirmAdmin = admins.find(admin => admin.email === user.email);
 
     const handleUpdate = (id) => {
         const updateBooking = { status: "approved" };
@@ -35,7 +36,6 @@ const AllBooking = ({ book, places, booking, setBooking }) => {
 
         if (result) {
             const url = `https://aqueous-badlands-20033.herokuapp.com/booking/${id}`;
-
             fetch(url, {
                 method: 'DELETE'
             })
@@ -66,13 +66,13 @@ const AllBooking = ({ book, places, booking, setBooking }) => {
                             </Card.Text>
 
                             {
-                                isApproved === "pending" ? <small><Button variant="outline-success"
+                                isApproved === "pending" && confirmAdmin ? <small><Button variant="outline-success"
                                     size="sm"
                                     onClick={() => handleUpdate(_id)}
                                 >Approve</Button></small> : <small><Button variant="outline-secondary"
                                     size="sm"
                                     disabled
-                                >Approved</Button></small>
+                                >Approve</Button></small>
                             }
 
                         </div>

@@ -3,7 +3,7 @@ import { Button, Card, Col } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 
 
-const Booked = ({ book, places, booking, setBooking }) => {
+const Booked = ({ book, places, booking, setBooking, admins }) => {
     const { _id, orderId, email, status } = book;
     const { user } = useAuth();
 
@@ -55,6 +55,10 @@ const Booked = ({ book, places, booking, setBooking }) => {
         }
     }
 
+
+    const confirmAdmin = admins.find(admin => admin.email === user.email);
+
+
     return (
         <div>
             {
@@ -72,13 +76,13 @@ const Booked = ({ book, places, booking, setBooking }) => {
                                 </Card.Text>
 
                                 {
-                                    isApproved === "pending" ? <small><Button variant="outline-success"
+                                    isApproved === "pending" && confirmAdmin ? <small><Button variant="outline-success"
                                         size="sm"
                                         onClick={() => handleUpdate(_id)}
                                     >Approve</Button></small> : <small><Button variant="outline-secondary"
                                         size="sm"
                                         disabled
-                                    >Approved</Button></small>
+                                    >Approve</Button></small>
                                 }
 
                             </div>

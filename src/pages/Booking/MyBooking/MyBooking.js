@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -7,6 +7,13 @@ import Booked from '../Booked/Booked';
 
 const MyBooking = () => {
     const { booking, setBooking, places, setPlaces } = useAuth();
+    const [admins, setAdmins] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://aqueous-badlands-20033.herokuapp.com/admin`)
+            .then(res => res.json())
+            .then(data => setAdmins(data));
+    }, []);
 
     useEffect(() => {
         fetch('https://aqueous-badlands-20033.herokuapp.com/booking')
@@ -40,7 +47,7 @@ const MyBooking = () => {
             <Container>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {
-                        booking.map(book => <Booked key={book._id} book={book} places={places} booking={booking} setBooking={setBooking} />)
+                        booking.map(book => <Booked key={book._id} book={book} places={places} booking={booking} setBooking={setBooking} admins={admins} />)
                     }
                 </Row>
                 <Link to="/places"><Button variant="outline-warning px-5 mt-5">Want to Book</Button></Link>
