@@ -12,7 +12,6 @@ const Place = ({ place }) => {
                 <Card.Img variant="top" src={img} height="250" className="rounded-top" />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>{_id}</Card.Text>
 
                     <Link to={`/placeOrder/${_id}`}>
                         <Button variant="success px-5 mt-3" >Book</Button>

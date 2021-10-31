@@ -48,21 +48,21 @@ const PlaceOrder = () => {
 
     return (
         <Container>
-            <h1>Enjoy, {user.displayName}!!!</h1>
-            <h3>{user.email}</h3>
+            <h1 className="mt-5 text-primary">Enjoy, {user.displayName}!!!</h1>
+            <h5>Email: {user.email}</h5>
             <Row className="mt-5">
-                <Col xs={12} md={6}>
+                <Col xs={12} md={6} lg={8}>
                     <Card className="h-100 rounded">
                         <Card.Img variant="top" src={img} height="250" className="rounded-top" />
                         <Card.Body>
                             <Card.Title>{name}</Card.Title>
                             <Card.Text>{description}</Card.Text>
-                            {/* <Button variant="success px-5 mt-3" onClick={() => handleBooking(_id)}>Book</Button> */}
+
                         </Card.Body>
                     </Card>
                 </Col>
 
-                <Col xs={12} md={6}>
+                <Col xs={12} md={6} lg={4}>
                     <Row
                         className="justify-content-center mt-5 w-100 mx-auto">
                         <Col className="bg-success bg-opacity-25 p-4 rounded-3">

@@ -1,12 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
+import useAuth from '../../../hooks/useAuth';
 import Banner from '../../Shared/Banner/Banner';
 
 const AddPlace = () => {
+    const [admins, setAdmins] = useState([]);
+    const { user } = useAuth();
+
     const nameRef = useRef();
     const imgRef = useRef();
     const descriptionRef = useRef();
 
+    useEffect(() => {
+        fetch(`https://aqueous-badlands-20033.herokuapp.com/admin`)
+            .then(res => res.json())
+            .then(data => setAdmins(data));
+    }, []);
+
+    const confirmAdmin = admins.find(admin => admin.email === user.email);
 
     const handleAddUser = e => {
         e.preventDefault();
@@ -30,6 +41,8 @@ const AddPlace = () => {
                 }
             })
     }
+
+
 
 
     return (
@@ -61,7 +74,9 @@ const AddPlace = () => {
                         >
                             <Form.Control as="textarea" type="url" ref={descriptionRef} placeholder="Description" required />
                         </FloatingLabel>
-                        <Button variant="primary" type="submit" >Add</Button>
+                        {
+                            confirmAdmin ? <Button variant="primary" type="submit" >Add</Button> : <Button variant="primary" type="submit" disabled >Add</Button>
+                        }
                     </Form>
                 </Col>
             </Row>

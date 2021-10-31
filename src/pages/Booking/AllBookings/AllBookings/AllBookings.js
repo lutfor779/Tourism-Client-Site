@@ -42,14 +42,17 @@ const AllBookings = () => {
     return (
         <div>
             <Banner />
-            <h1 className="my-5">All Orders</h1>
+            <h1 className="my-5 text-success">All Orders</h1>
             <Container>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {
                         booking.map(book => <AllBooking key={book._id} book={book} places={places} booking={booking} setBooking={setBooking} admins={admins} />)
                     }
                 </Row>
-                <Link to="/places"><Button variant="outline-warning px-5 mt-5">Want to Book</Button></Link>
+                <br />
+                <br />
+                <br />
+                <Link to="/places"><Button variant="outline-info px-5 mt-5">Want to Book</Button></Link>
             </Container>
 
         </div>

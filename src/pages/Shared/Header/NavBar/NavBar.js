@@ -29,10 +29,16 @@ const NavBar = () => {
                         <Nav className="me-auto">
                             <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
                             <Nav.Link as={HashLink} to="/places">Places</Nav.Link>
+                            {
+                                user.email && <Nav.Link as={HashLink} to="/booking">My Orders</Nav.Link>
+                            }
+                            {
+                                user.email && <Nav.Link as={HashLink} to="/allBooking">All Orders</Nav.Link>
+                            }
+                            {
+                                user.email && <Nav.Link as={HashLink} to="/addPlace">Add Place</Nav.Link>
+                            }
                             <Nav.Link as={HashLink} to="/users">Users</Nav.Link>
-                            <Nav.Link as={HashLink} to="/booking">My Orders</Nav.Link>
-                            <Nav.Link as={HashLink} to="/addPlace">Add Place</Nav.Link>
-                            <Nav.Link as={HashLink} to="/allBooking">All Orders</Nav.Link>
                         </Nav>
 
 

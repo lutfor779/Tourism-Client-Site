@@ -26,7 +26,7 @@ const Users = () => {
     return (
         <div>
             <Banner />
-            <h1>user</h1>
+            <h1 className="my-5 text-info">All Users</h1>
             <br />
             <Container>
                 <Row className="g-5">

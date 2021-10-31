@@ -6,7 +6,7 @@ import Banner from '../../Shared/Banner/Banner';
 import Booked from '../Booked/Booked';
 
 const MyBooking = () => {
-    const { booking, setBooking, places, setPlaces } = useAuth();
+    const { user, booking, setBooking, places, setPlaces } = useAuth();
     const [admins, setAdmins] = useState([]);
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const MyBooking = () => {
     return (
         <div>
             <Banner></Banner>
-            <h1 className="my-5">My Orders</h1>
+            <h1 className="my-5 text-danger">{user.displayName}'s Order</h1>
             <Container>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {
