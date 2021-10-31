@@ -9,14 +9,11 @@ const Booked = ({ book, places, booking, setBooking }) => {
 
     const [isApproved, setIsApproved] = useState(status);
 
-
     if (user.email !== email) {
         return false;
     }
 
-
     const result = places.length !== 0 && places.find(place => place._id === orderId);
-
 
     const handleUpdate = (id) => {
         const updateBooking = { status: "approved" };
@@ -40,7 +37,6 @@ const Booked = ({ book, places, booking, setBooking }) => {
 
     const handleDelete = id => {
         const result = window.confirm('Want to remove this item?');
-        // console.log(result);
 
         if (result) {
             const url = `https://aqueous-badlands-20033.herokuapp.com/booking/${id}`;

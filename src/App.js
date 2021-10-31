@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/AuthProvider';
+import AllBookings from './pages/Booking/AllBookings/AllBookings/AllBookings';
 import MyBooking from './pages/Booking/MyBooking/MyBooking';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
@@ -42,6 +43,9 @@ function App() {
               </PrivateRoute>
               <PrivateRoute path="/placeOrder/:bookingId">
                 <PlaceOrder />
+              </PrivateRoute>
+              <PrivateRoute path="/allBooking">
+                <AllBookings></AllBookings>
               </PrivateRoute>
               <Route path="/addPlace">
                 <AddPlace />

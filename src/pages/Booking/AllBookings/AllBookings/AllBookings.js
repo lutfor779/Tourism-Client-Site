@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Button, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
-import Banner from '../../Shared/Banner/Banner';
-import Booked from '../Booked/Booked';
+import useAuth from '../../../../hooks/useAuth';
+import Banner from '../../../Shared/Banner/Banner';
+import AllBooking from '../AllBooking/AllBooking';
 
-const MyBooking = () => {
+const AllBookings = () => {
     const { booking, setBooking, places, setPlaces } = useAuth();
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const MyBooking = () => {
 
         return (
             <div>
-                <Banner></Banner>
+                <Banner />
                 <h1 className="my-5 text-warning">Please book first</h1>
                 <Link to="/places"><Button variant="outline-primary px-5">Book</Button></Link>
 
@@ -35,18 +35,19 @@ const MyBooking = () => {
 
     return (
         <div>
-            <Banner></Banner>
-            <h1 className="my-5">My Orders</h1>
+            <Banner />
+            <h1 className="my-5">All Orders</h1>
             <Container>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {
-                        booking.map(book => <Booked key={book._id} book={book} places={places} booking={booking} setBooking={setBooking} />)
+                        booking.map(book => <AllBooking key={book._id} book={book} places={places} booking={booking} setBooking={setBooking} />)
                     }
                 </Row>
                 <Link to="/places"><Button variant="outline-warning px-5 mt-5">Want to Book</Button></Link>
             </Container>
+
         </div>
     );
 };
 
-export default MyBooking;
+export default AllBookings;
